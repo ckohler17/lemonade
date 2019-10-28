@@ -16,9 +16,32 @@ namespace LemonadeStand
         //constructor(Builder)
         public Weather()
         {
+            weatherConditions = new List<string>() { "cloudy", "rainy", "sunny", "muggy" };           
 
         }
 
         //member methods(Can Do)
+        public void DetermineWeatherConditions()
+        {
+            Random random = new Random();
+            int index = random.Next(weatherConditions.Count);
+            Console.WriteLine(weatherConditions[index]);
+            condition = weatherConditions[index];
+            
+        }
+        public void DetermineTemperature()
+        {
+            Random random = new Random();
+            temperature = random.Next(50,100);        
+        }
+        public void DisplayTemperature()
+        {
+            Console.WriteLine("The temperature is " + temperature + "degrees.");
+        }
+        public void DisplayWeatherConditions()
+        {
+            Console.WriteLine("The weather condition is " + condition + ".");
+        }
+
     }
 }

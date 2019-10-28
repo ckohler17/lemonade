@@ -17,7 +17,10 @@ namespace LemonadeStand
         //constructor(Builder)
         public Store()
         {
-
+            pricePerCup = .01;
+            pricePerIceCube = .02;
+            pricePerLemon = .05;
+            pricePerSugarCube = .05;
         }
 
         //member methods(Can Do)

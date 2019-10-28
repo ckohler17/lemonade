@@ -15,7 +15,8 @@ namespace LemonadeStand
         //constructor(Builder)
         public Day()
         {
-
+            weather = new Weather();
+            customers = new List<Customer>();
         }
 
         //member methods(Can Do)

@@ -11,8 +11,8 @@ namespace LemonadeStand
         //member variables(Has A)
         public List<Lemon> lemons;
         public List<Cup> cups;
-        public List<SugarCubes> sugarcubes;
-        public List<IceCube> icecubes;
+        public List<SugarCubes> sugarCubes;
+        public List<IceCube> iceCubes;
 
         //constructor(Builder)
         public Inventory()

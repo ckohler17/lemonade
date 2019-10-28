@@ -16,9 +16,16 @@ namespace LemonadeStand
         //constructor(Builder)
         public Customer()
         {
-
+            names = new List<string>() { "First Person", "Candy Cane", "Carolynn Kohler", "Fourth Person", "Minnie Mouse", "Mickey Mouse",
+            "Lolli Pop", "Tootsie Roll"};
+            
         }
 
         //member methods(Can Do)
+
+        public void IsCustomerWillingToBuy()
+        {
+
+        }
     }
 }
