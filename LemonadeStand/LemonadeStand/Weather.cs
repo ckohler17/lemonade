@@ -21,15 +21,13 @@ namespace LemonadeStand
         }
 
         //member methods(Can Do)
-        public void DetermineWeatherConditions()
+        public void DetermineWeatherConditions(Random random)
         {
-            Random random = new Random();
             int index = random.Next(weatherConditions.Count);
             condition = weatherConditions[index];            
         }
-        public void DetermineTemperature()
+        public void DetermineTemperature(Random random)
         {
-            Random random = new Random();
             temperature = random.Next(50,100);        
         }
         public void DisplayTemperature()

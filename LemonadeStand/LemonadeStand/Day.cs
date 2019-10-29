@@ -18,13 +18,41 @@ namespace LemonadeStand
         {
             weather = new Weather();
             customers = new List<Customer>();
-            name = new List<string>(i) { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
-
-
-            
+            DetermineDayOfWeek(i);
+                       
         }
 
         //member methods(Can Do)
+        public void DetermineDayOfWeek(int i)
+        {
+           
+                switch (i)
+            {
+                case 0:
+                    name = "Sunday";
+                    break;
+                case 1:
+                    name = "Monday";
+                    break;
+                case 2:
+                    name = "Tuesday";
+                    break;
+                case 3:
+                    name = "Wednesday";
+                    break;
+                case 4:
+                    name = "Thursday";
+                    break;
+                case 5:
+                    name = "Friday";
+                    break;
+                case 6:
+                    name = "Saturday";
+                    break;                  
+
+            }
+
+        }
 
     }
 }
