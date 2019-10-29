@@ -17,7 +17,7 @@ namespace LemonadeStand
         public Weather()
         {
             weatherConditions = new List<string>() { "cloudy", "rainy", "sunny", "muggy" };           
-
+            
         }
 
         //member methods(Can Do)
@@ -25,9 +25,7 @@ namespace LemonadeStand
         {
             Random random = new Random();
             int index = random.Next(weatherConditions.Count);
-            Console.WriteLine(weatherConditions[index]);
-            condition = weatherConditions[index];
-            
+            condition = weatherConditions[index];            
         }
         public void DetermineTemperature()
         {

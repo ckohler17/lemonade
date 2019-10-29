@@ -15,7 +15,7 @@ namespace LemonadeStand
         //constructor(Builder)
         public Wallet()
         {
-
+            money = 20.00;
         }
 
         //member methods(Can Do)
