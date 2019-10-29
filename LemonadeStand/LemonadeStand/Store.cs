@@ -14,6 +14,7 @@ namespace LemonadeStand
         double pricePerCup;
         double pricePerSugarCube;
         
+        
 
         //constructor(Builder)
         public Store()
@@ -22,7 +23,7 @@ namespace LemonadeStand
             pricePerIceCube = .02;
             pricePerLemon = .05;
             pricePerSugarCube = .05;
-            
+           
         }
 
         //member methods(Can Do)
@@ -49,26 +50,32 @@ namespace LemonadeStand
             Console.WriteLine("The price of a lemon is " + pricePerLemon + ".");
             Console.WriteLine("The price of a sugar cube is " + pricePerSugarCube + ".");
         }
-        public void HowManyCupsToBuy() 
+        public int HowManyCupsToBuy() 
         {
             Console.WriteLine("How many cups would you like to buy?");
             int cupsBought = int.Parse(Console.ReadLine());
+            return cupsBought;
         }
-        public void HowManyIceCubesToBuy()
+        public int HowManyIceCubesToBuy()
         {
-            Console.WriteLine("How many ice cubes would you like to buy?)";
+            Console.WriteLine("How many ice cubes would you like to buy?");
             int iceCubesBought = int.Parse(Console.ReadLine());
+            return iceCubesBought;
         }
-        public void HowManyLemonsToBuy()
+        public int HowManyLemonsToBuy()
         {
             Console.WriteLine("How many lemons would you like to buy?");
             int lemonsBought = int.Parse(Console.ReadLine());
+            return lemonsBought;
         }
-        public void HowManySugarCubesToBuy()
+        public int HowManySugarCubesToBuy()
         {
-            Console.WriteLine("How many sugar cubes would you like to buy?)";
+            Console.WriteLine("How many sugar cubes would you like to buy?");
             int sugarCubesBought = int.Parse(Console.ReadLine());
+            return sugarCubesBought;
         }
+
+
 
         
     }
