@@ -26,25 +26,26 @@ namespace LemonadeStand
         //member methods(Can Do)
         public void RunGame()
         {
-            DisplayRules();
-            DetermineNumberOfDays();          
+            //DisplayRules();
             //player.EnterNameOfPlayer();
+            //DetermineNumberOfDays();
+            //Forecast();
             //player.ChangeRecipe();
-            //if(player.response == "yes") {
+            //if (player.response == "yes")
+            //{
             //    player.ChangeNumberOfIceCubesInRecipe();
             //    player.ChangeNumberOfLemonsInRecipe();
             //    player.ChangeNumberOfSugarCubesInRecipe();
             //}
-            WeatherPerDay();
-            Forecast();
             
-            
+
+
         }
         public void DisplayRules()
         {
-            Console.WriteLine("You have 7 days to try to make as much money as you can selling lemonade. You will want to check the weather" +
-                "everyday to determine how much lemonade you think you might sell on a given day so that you know how many of your supplies" +
-                " you will need to purchase.");
+            Console.WriteLine("You have 7 days to try to make as much money as you can selling lemonade. You will want to check the weather " +
+                "everyday to determine how much lemonade you think you might sell on a given day so that you know how many of your supplies " +
+                "you will need to purchase.");
         }
         public void DetermineNumberOfDays()
         {

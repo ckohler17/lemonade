@@ -10,7 +10,7 @@ namespace LemonadeStand
     {
         //member variables(Has A)
         List<string> names;
-        public string name;
+        
 
 
         //constructor(Builder)

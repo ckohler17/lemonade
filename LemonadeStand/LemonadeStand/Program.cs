@@ -12,11 +12,8 @@ namespace LemonadeStand
         {
             Game game = new Game();
             game.RunGame();
-            //Weather weather = new Weather();
-            //weather.DetermineTemperature();
-            //weather.DetermineWeatherConditions();
-            //weather.DisplayTemperature();
-            //weather.DisplayWeatherConditions();
+
+
 
 
         }

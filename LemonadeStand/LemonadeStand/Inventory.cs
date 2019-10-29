@@ -17,9 +17,21 @@ namespace LemonadeStand
         //constructor(Builder)
         public Inventory()
         {
-
+            lemons = new List<Lemon>();
+            cups = new List<Cup>();
+            sugarCubes = new List<SugarCubes>();
+            iceCubes = new List<IceCube>();
         }
 
         //member methods(Can Do)
+       public void DisplayInventory()
+        {
+            Console.WriteLine("Currently this is what your inventory looks like:");
+            Console.WriteLine("Lemons: " + lemons.Count);
+            Console.WriteLine("Cups: " + cups.Count);
+            Console.WriteLine("Sugar cubes: " + sugarCubes.Count);
+            Console.WriteLine("Ice cubes: " + iceCubes.Count);
+        }
+
     }
 }
