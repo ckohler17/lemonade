@@ -14,7 +14,7 @@ namespace LemonadeStand
             Recipe recipe;
             public Inventory inventory;
             public Wallet wallet;
-            Pitcher pitcher;
+            public Pitcher pitcher;
 
             //constructor(Builder)
             public Player()
@@ -22,6 +22,7 @@ namespace LemonadeStand
                 recipe = new Recipe();
                 inventory = new Inventory();
                 wallet = new Wallet();
+                pitcher = new Pitcher();
             }
 
             //member methods(Can Do)

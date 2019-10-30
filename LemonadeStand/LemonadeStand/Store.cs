@@ -54,7 +54,7 @@ namespace LemonadeStand
         {
             Console.WriteLine("How many cups would you like to buy?");
             int cupsBought = int.Parse(Console.ReadLine());
-            if((cupsBought * pricePerCup) >= player.wallet.Money)
+            if((cupsBought * pricePerCup) <= player.wallet.Money)
             {
                 player.inventory.ChangeCupsInventory(cupsBought);
                 player.wallet.Money -= (cupsBought * pricePerCup);
@@ -70,9 +70,10 @@ namespace LemonadeStand
         {
             Console.WriteLine("How many ice cubes would you like to buy?"); 
             int iceCubesBought = int.Parse(Console.ReadLine()); 
-            if(iceCubesBought * pricePerIceCube >= player.wallet.Money)
+            if(iceCubesBought * pricePerIceCube <= player.wallet.Money)
             {
                 player.inventory.ChangeIceCubesInventory(iceCubesBought);
+                player.wallet.Money -= (iceCubesBought * pricePerIceCube);
             }
             else
             {
@@ -83,9 +84,10 @@ namespace LemonadeStand
         {
             Console.WriteLine("How many lemons would you like to buy?");
             int lemonsBought = int.Parse(Console.ReadLine());
-            if(lemonsBought * pricePerLemon >= player.wallet.Money)
+            if(lemonsBought * pricePerLemon <= player.wallet.Money)
             {
                 player.inventory.ChangeLemonInventory(lemonsBought);
+                player.wallet.Money -= (lemonsBought * pricePerLemon);
             }
             else
             {
@@ -97,9 +99,10 @@ namespace LemonadeStand
         {
             Console.WriteLine("How many sugar cubes would you like to buy?");
             int sugarCubesBought = int.Parse(Console.ReadLine());
-            if(sugarCubesBought * pricePerSugarCube >= player.wallet.Money)
+            if(sugarCubesBought * pricePerSugarCube <= player.wallet.Money)
             {
                 player.inventory.ChangeSugarCubesInventory(sugarCubesBought);
+                player.wallet.Money -= (sugarCubesBought * pricePerSugarCube);
             }
             else
             {

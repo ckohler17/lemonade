@@ -27,18 +27,18 @@ namespace LemonadeStand
         //member methods(Can Do)
         public void RunGame()
         {
-            //DisplayRules();
-            //player.EnterNameOfPlayer();
-            //DetermineNumberOfDays();
-            //WeatherPerDay();
-            //Forecast();
-            //player.DoYouWantToChangeRecipe();
-            //if (player.response == "yes")
-            //{
-            //    player.ChangeNumberOfIceCubesInRecipe();
-            //    player.ChangeNumberOfLemonsInRecipe();
-            //    player.ChangeNumberOfSugarCubesInRecipe();
-            //}
+            DisplayRules();
+            player.EnterNameOfPlayer();
+            DetermineNumberOfDays();
+            WeatherPerDay();
+            Forecast();
+            player.DoYouWantToChangeRecipe();
+            if (player.response == "yes")
+            {
+                player.ChangeNumberOfIceCubesInRecipe();
+                player.ChangeNumberOfLemonsInRecipe();
+                player.ChangeNumberOfSugarCubesInRecipe();
+            }
             store.DisplayPriceOfAllItems();
             player.wallet.DisplayWallet();
             store.SellCups(player);
@@ -46,9 +46,11 @@ namespace LemonadeStand
             store.SellLemons(player);
             store.SellSugarCubes(player);          
             player.inventory.DisplayInventory();
-            
-                      
-                      
+            player.pitcher.MakeAPitcherOfLemonade(player.inventory);
+            day.RunDay();
+
+    
+                   
             
         }
         public void DisplayRules()

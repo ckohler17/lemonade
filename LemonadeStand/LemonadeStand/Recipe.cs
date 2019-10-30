@@ -18,10 +18,10 @@ namespace LemonadeStand
         //constructor(Builder)
         public Recipe()
         {
-            amountOfIceCubes = 4;
+            amountOfIceCubes = 8;
             amountOfSugarCubes = 4;
-            amountOfLemons = 5;
-            pricePerCup = .50;
+            amountOfLemons = 4;
+            pricePerCup = .75;
         }
 
         //member methods(Can Do)

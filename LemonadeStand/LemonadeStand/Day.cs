@@ -12,20 +12,19 @@ namespace LemonadeStand
         public Weather weather;
         public List<Customer> customers;
         public string name;
-
+      
         //constructor(Builder)
         public Day(int i)
         {
             weather = new Weather();
-            customers = new List<Customer>();
             DetermineDayOfWeek(i);
-                       
+                                
         }
 
         //member methods(Can Do)
         public void RunDay()
         {
-         
+            DetermineNumberOfCustomers();
 
         }
         public void DetermineDayOfWeek(int i)
@@ -57,6 +56,18 @@ namespace LemonadeStand
 
             }
 
+        }
+
+
+        public void DetermineNumberOfCustomers()
+        {
+            Random random = new Random();
+            int potentialCustomers = random.Next(50, 100); 
+            customers = new List<Customer>();
+            for (int i = 0; i < potentialCustomers; i++)
+            {
+                customers.Add(new Customer());
+            }
         }
 
     }
