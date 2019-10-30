@@ -23,6 +23,11 @@ namespace LemonadeStand
         }
 
         //member methods(Can Do)
+        public void RunDay()
+        {
+         
+
+        }
         public void DetermineDayOfWeek(int i)
         {
            

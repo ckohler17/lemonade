@@ -12,14 +12,16 @@ namespace LemonadeStand
             public string name;
             public string response;
             Recipe recipe;
-            Inventory inventory;
-            Wallet wallet;
+            public Inventory inventory;
+            public Wallet wallet;
             Pitcher pitcher;
 
             //constructor(Builder)
             public Player()
             {
                 recipe = new Recipe();
+                inventory = new Inventory();
+                wallet = new Wallet();
             }
 
             //member methods(Can Do)
@@ -31,25 +33,10 @@ namespace LemonadeStand
 
             //buy items at the store
 
-            public void BuyLemons()
-            {
 
-            }
-            public void BuyIceCubes()
-            {
-
-            }
-            public void BuyCups()
-            {
-
-            }
-            public void BuySugarCubes()
-            {
-
-            }
 
             //change recipe
-            public void ChangeRecipe()
+            public void DoYouWantToChangeRecipe()
             {
             Console.WriteLine("There are currently " + recipe.amountOfIceCubes + " ice cubes, " + recipe.amountOfSugarCubes + " sugar cubes and " + recipe.amountOfLemons+ " lemons in your recipe. Do you want to change these values? Please enter 'yes' to change or 'no' to continue.");
                  response = Console.ReadLine();

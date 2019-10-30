@@ -13,14 +13,15 @@ namespace LemonadeStand
         Day day;
         List<Day> days;
         int currentDay;
+        Store store;
 
         //constructor(Builder)
         public Game()
         {
             player = new Player();
             day = new Day(0);
-           
-                                   
+            store = new Store();     
+                                                        
         }
 
         //member methods(Can Do)
@@ -29,17 +30,26 @@ namespace LemonadeStand
             //DisplayRules();
             //player.EnterNameOfPlayer();
             //DetermineNumberOfDays();
+            //WeatherPerDay();
             //Forecast();
-            //player.ChangeRecipe();
+            //player.DoYouWantToChangeRecipe();
             //if (player.response == "yes")
             //{
             //    player.ChangeNumberOfIceCubesInRecipe();
             //    player.ChangeNumberOfLemonsInRecipe();
             //    player.ChangeNumberOfSugarCubesInRecipe();
             //}
+            store.DisplayPriceOfAllItems();
+            player.wallet.DisplayWallet();
+            store.SellCups(player);
+            store.SellIceCubes(player);
+            store.SellLemons(player);
+            store.SellSugarCubes(player);          
+            player.inventory.DisplayInventory();
             
-
-
+                      
+                      
+            
         }
         public void DisplayRules()
         {
