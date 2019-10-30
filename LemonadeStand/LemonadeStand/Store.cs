@@ -56,7 +56,7 @@ namespace LemonadeStand
             int cupsBought = int.Parse(Console.ReadLine());
             if((cupsBought * pricePerCup) <= player.wallet.Money)
             {
-                player.inventory.ChangeCupsInventory(cupsBought);
+                player.inventory.AddCupsInventory(cupsBought);
                 player.wallet.Money -= (cupsBought * pricePerCup);
             }
             else
@@ -72,7 +72,7 @@ namespace LemonadeStand
             int iceCubesBought = int.Parse(Console.ReadLine()); 
             if(iceCubesBought * pricePerIceCube <= player.wallet.Money)
             {
-                player.inventory.ChangeIceCubesInventory(iceCubesBought);
+                player.inventory.AddIceCubesInventory(iceCubesBought);
                 player.wallet.Money -= (iceCubesBought * pricePerIceCube);
             }
             else
@@ -86,7 +86,7 @@ namespace LemonadeStand
             int lemonsBought = int.Parse(Console.ReadLine());
             if(lemonsBought * pricePerLemon <= player.wallet.Money)
             {
-                player.inventory.ChangeLemonInventory(lemonsBought);
+                player.inventory.AddLemonInventory(lemonsBought);
                 player.wallet.Money -= (lemonsBought * pricePerLemon);
             }
             else
@@ -101,7 +101,7 @@ namespace LemonadeStand
             int sugarCubesBought = int.Parse(Console.ReadLine());
             if(sugarCubesBought * pricePerSugarCube <= player.wallet.Money)
             {
-                player.inventory.ChangeSugarCubesInventory(sugarCubesBought);
+                player.inventory.AddSugarCubesInventory(sugarCubesBought);
                 player.wallet.Money -= (sugarCubesBought * pricePerSugarCube);
             }
             else

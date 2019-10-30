@@ -30,7 +30,7 @@ namespace LemonadeStand
             Console.WriteLine("Sugar cubes: " + sugarCubes.Count);
             Console.WriteLine("Ice cubes: " + iceCubes.Count);
         }
-        public void ChangeLemonInventory(int lemonsBought)
+        public void AddLemonInventory(int lemonsBought)
         {
             lemons = new List<Lemon>();
             for(int i = 0; i < lemonsBought; i++)
@@ -39,7 +39,7 @@ namespace LemonadeStand
             }
 
         }
-        public void ChangeCupsInventory(int cupsBought)
+        public void AddCupsInventory(int cupsBought)
         {
             cups = new List<Cup>();
             for (int i = 0; i < cupsBought; i++)
@@ -47,7 +47,7 @@ namespace LemonadeStand
                 cups.Add(new Cup());
             }
         }
-        public void ChangeSugarCubesInventory(int sugarCubesBought)
+        public void AddSugarCubesInventory(int sugarCubesBought)
         {
             sugarCubes = new List<SugarCubes>();
             for(int i =0; i < sugarCubesBought; i++)
@@ -55,12 +55,34 @@ namespace LemonadeStand
                 sugarCubes.Add(new SugarCubes());
             }
         }
-        public void ChangeIceCubesInventory(int iceCubesBought)
+        public void AddIceCubesInventory(int iceCubesBought)
         {
             iceCubes = new List<IceCube>();
             for(int i = 0; i < iceCubesBought; i++)
             {
                 iceCubes.Add(new IceCube());
+            }
+        }
+        public void SubtractLemonInventory(Recipe recipe)
+        {
+            lemons = new List<Lemon>();
+            for(int i = 0; i < recipe.amountOfLemons; i++)
+            {
+                lemons.Remove(new Lemon());
+            }
+        }
+        public void SubtractSugarCubeInventory(Recipe recipe)
+        {
+            for(int i = 0; i < recipe.amountOfSugarCubes; i++)
+            {
+                sugarCubes.Remove(new SugarCubes());
+            }
+        }
+        public void SubtractIceCubesInventory(Recipe recipe)
+        {
+            for(int i = 0; i < recipe.amountOfSugarCubes; i++)
+            {
+                iceCubes.Remove(new IceCube());
             }
         }
 

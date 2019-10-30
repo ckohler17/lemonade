@@ -24,6 +24,7 @@ namespace LemonadeStand
             if(inventory.lemons.Count >= recipe.amountOfLemons && inventory.iceCubes.Count >= recipe.amountOfIceCubes && inventory.sugarCubes.Count >= recipe.amountOfSugarCubes)
             {
                 cupsLeftInPitcher = 12;
+                
             } else
             {
                 Console.WriteLine("You do not have enough ingredients to make a new pitcher of lemonade.");

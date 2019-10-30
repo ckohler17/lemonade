@@ -68,12 +68,13 @@ namespace LemonadeStand
                 oddsOnRecipe = random.Next(60, 100);
             }
         }
-        public void ChanceCustomerBuys(Pitcher pitcher)
+        public void ChanceCustomerBuys(Pitcher pitcher, Player player, Recipe recipe)
         {
             if(oddsOnRecipe > 50 && oddsOnTemperature > 50 && oddsOnWeather > 50)
             {
                 Console.WriteLine("Bought a cup!");
-                pitcher.cupsLeftInPitcher -= 4;
+                pitcher.cupsLeftInPitcher -= 1;
+                player.wallet.Money += recipe.pricePerCup;                
             }
         }
 
