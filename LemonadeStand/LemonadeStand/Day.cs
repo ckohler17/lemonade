@@ -22,11 +22,53 @@ namespace LemonadeStand
         }
 
         //member methods(Can Do)
-        public void RunDay()
+        public void RunDay(Store store, Player player, Recipe recipe)
         {
+
+            player.DoYouWantToChangeRecipe();
+            if (player.response == "yes")
+            {
+                player.ChangeNumberOfIceCubesInRecipe();
+                player.ChangeNumberOfLemonsInRecipe();
+                player.ChangeNumberOfSugarCubesInRecipe();
+            }
+            store.DisplayPriceOfAllItems();
+            player.wallet.DisplayWallet();
+            store.SellCups(player);
+            store.SellIceCubes(player);
+            store.SellLemons(player);
+            store.SellSugarCubes(player);
+            player.inventory.DisplayInventory();
+            player.pitcher.MakeAPitcherOfLemonade(player.inventory, player.recipe);
+            player.inventory.SubtractIceCubesInventory(recipe);
+            player.inventory.SubtractLemonInventory(recipe);
+            player.inventory.SubtractSugarCubeInventory(recipe);
             DetermineNumberOfCustomers();
+            foreach(Customer customer in customers)
+            {   if (player.pitcher.cupsLeftInPitcher > 0)
+                {
+                    customer.OddsCustomerIsWillingToBuyBasedOnRecipe(player.recipe);
+                    customer.OddsCustomerIsWillingToBuyBasedOnTemperature(weather);
+                    customer.OddsCustomerIsWillingToBuyBasedOnWeather(weather);
+                    customer.ChanceCustomerBuys(player.pitcher, player, recipe);
+                    if (player.pitcher.cupsLeftInPitcher < 1)
+                    {
+                        player.pitcher.MakeAPitcherOfLemonade(player.inventory, recipe);
+                        if (player.pitcher.cupsLeftInPitcher > 0)
+                        {
+                            player.inventory.SubtractIceCubesInventory(recipe);
+                            player.inventory.SubtractLemonInventory(recipe);
+                            player.inventory.SubtractSugarCubeInventory(recipe);
+                        }
+
+                    }
+                }
+            }
+            player.wallet.DisplayWallet();
+            Console.WriteLine("Done");
 
         }
+
         public void DetermineDayOfWeek(int i)
         {
            

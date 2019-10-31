@@ -10,20 +10,20 @@ namespace LemonadeStand
     {
         //member variables(Has A)
         public int cupsLeftInPitcher;
-        public Recipe recipe;
+        
 
         //constructor(Builder)
         public Pitcher()
         {
-            recipe = new Recipe();           
+                    
         }
 
         //member methods(Can Do)
-        public void MakeAPitcherOfLemonade(Inventory inventory)
+        public void MakeAPitcherOfLemonade(Inventory inventory, Recipe recipe)
         {
             if(inventory.lemons.Count >= recipe.amountOfLemons && inventory.iceCubes.Count >= recipe.amountOfIceCubes && inventory.sugarCubes.Count >= recipe.amountOfSugarCubes)
             {
-                cupsLeftInPitcher = 12;
+                cupsLeftInPitcher = 2;
                 
             } else
             {

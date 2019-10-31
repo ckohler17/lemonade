@@ -10,7 +10,6 @@ namespace LemonadeStand
     {
         //member variables(Has A)
         Player player;
-        Day day;
         List<Day> days;
         int currentDay;
         Store store;
@@ -18,8 +17,7 @@ namespace LemonadeStand
         //constructor(Builder)
         public Game()
         {
-            player = new Player();
-            day = new Day(0);
+            player = new Player();          
             store = new Store();     
                                                         
         }
@@ -31,25 +29,9 @@ namespace LemonadeStand
             player.EnterNameOfPlayer();
             DetermineNumberOfDays();
             WeatherPerDay();
-            Forecast();
-            player.DoYouWantToChangeRecipe();
-            if (player.response == "yes")
-            {
-                player.ChangeNumberOfIceCubesInRecipe();
-                player.ChangeNumberOfLemonsInRecipe();
-                player.ChangeNumberOfSugarCubesInRecipe();
-            }
-            store.DisplayPriceOfAllItems();
-            player.wallet.DisplayWallet();
-            store.SellCups(player);
-            store.SellIceCubes(player);
-            store.SellLemons(player);
-            store.SellSugarCubes(player);          
-            player.inventory.DisplayInventory();
-            player.pitcher.MakeAPitcherOfLemonade(player.inventory);
-            day.RunDay();
-
-    
+            Forecast();         
+   
+            days[0].RunDay(store, player, player.recipe);    
                    
             
         }

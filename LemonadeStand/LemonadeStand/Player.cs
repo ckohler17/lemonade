@@ -11,7 +11,7 @@ namespace LemonadeStand
             //member variables(Has A)
             public string name;
             public string response;
-            Recipe recipe;
+            public Recipe recipe;
             public Inventory inventory;
             public Wallet wallet;
             public Pitcher pitcher;

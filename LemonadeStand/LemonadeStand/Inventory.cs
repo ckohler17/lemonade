@@ -65,25 +65,28 @@ namespace LemonadeStand
         }
         public void SubtractLemonInventory(Recipe recipe)
         {
-            lemons = new List<Lemon>();
-            for(int i = 0; i < recipe.amountOfLemons; i++)
+           for(int i = 0; i < recipe.amountOfLemons; i++)
             {
-                lemons.Remove(new Lemon());
+                lemons.RemoveAt(lemons.Count-1);
             }
         }
         public void SubtractSugarCubeInventory(Recipe recipe)
         {
             for(int i = 0; i < recipe.amountOfSugarCubes; i++)
             {
-                sugarCubes.Remove(new SugarCubes());
+                sugarCubes.RemoveAt(sugarCubes.Count-1);
             }
         }
         public void SubtractIceCubesInventory(Recipe recipe)
         {
-            for(int i = 0; i < recipe.amountOfSugarCubes; i++)
+            for(int i = 0; i < recipe.amountOfIceCubes; i++)
             {
-                iceCubes.Remove(new IceCube());
+                iceCubes.RemoveAt(iceCubes.Count-1);
             }
+        }
+        public void SubtractCupsInventory()
+        {
+            cups.RemoveAt(cups.Count - 1);
         }
 
     }
