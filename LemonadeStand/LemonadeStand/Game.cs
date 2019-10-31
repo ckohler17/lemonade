@@ -29,9 +29,14 @@ namespace LemonadeStand
             player.EnterNameOfPlayer();
             DetermineNumberOfDays();
             WeatherPerDay();
-            Forecast();         
-   
-            days[0].RunDay(store, player, player.recipe);    
+            Forecast();
+            foreach(Day day in days)
+            {
+                day.RunDay(store, player, player.recipe);
+            }    
+            
+            
+                
                    
             
         }
@@ -67,6 +72,7 @@ namespace LemonadeStand
             Console.WriteLine("On " + days[4].name + " it will be " + days[4].weather.temperature + " and " + days[4].weather.condition + ".");
             Console.WriteLine("On " + days[5].name + " it will be " + days[5].weather.temperature + " and " + days[5].weather.condition + ".");
             Console.WriteLine("On " + days[6].name + " it will be " + days[6].weather.temperature + " and " + days[6].weather.condition + ".");
+
         }
 
     }

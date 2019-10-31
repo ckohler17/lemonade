@@ -60,7 +60,7 @@ namespace LemonadeStand
             public void DeterminePricePerCup()
             {
                 Console.WriteLine("Currently, the price per cup is " + recipe.pricePerCup + ". How much would you like it to be?");
-                recipe.pricePerCup = int.Parse(Console.ReadLine());
+                recipe.pricePerCup = double.Parse(Console.ReadLine());
             }
     
     }

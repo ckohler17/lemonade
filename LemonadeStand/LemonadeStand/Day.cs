@@ -32,6 +32,7 @@ namespace LemonadeStand
                 player.ChangeNumberOfLemonsInRecipe();
                 player.ChangeNumberOfSugarCubesInRecipe();
             }
+            player.DeterminePricePerCup();
             store.DisplayPriceOfAllItems();
             player.wallet.DisplayWallet();
             store.SellCups(player);
@@ -104,7 +105,7 @@ namespace LemonadeStand
         public void DetermineNumberOfCustomers()
         {
             Random random = new Random();
-            int potentialCustomers = random.Next(50, 100); 
+            int potentialCustomers = random.Next(2, 10); 
             customers = new List<Customer>();
             for (int i = 0; i < potentialCustomers; i++)
             {

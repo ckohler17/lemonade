@@ -10,6 +10,7 @@ namespace LemonadeStand
     {
         //member variables(Has A)
         double money;
+        public double profit;
         public double Money
         {
             get
@@ -35,6 +36,10 @@ namespace LemonadeStand
         public void DisplayWallet()
         {
             Console.WriteLine("You currently have $" + money + " in your wallet.");
+        }
+        public void ProfitPerDay(Day day)
+        {
+
         }
     }
 }
