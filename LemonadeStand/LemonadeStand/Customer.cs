@@ -13,8 +13,7 @@ namespace LemonadeStand
         public int oddsOnWeather;
         public int oddsOnTemperature;
         public int oddsOnRecipe;
-        public int oddsOnPrice;
-        
+        public int oddsOnPrice;             
 
 
         //constructor(Builder)
@@ -83,16 +82,26 @@ namespace LemonadeStand
                 oddsOnPrice = random.Next(60, 100);
             }
         }
-        public void ChanceCustomerBuys(Pitcher pitcher, Player player, Recipe recipe)
+        public bool ChanceCustomerBuys(Pitcher pitcher, Player player, Recipe recipe, Weather weather)
         {
+            OddsCustomerIsWillingToBuyBasedOnPrice(recipe);
+            OddsCustomerIsWillingToBuyBasedOnRecipe(recipe);
+            OddsCustomerIsWillingToBuyBasedOnTemperature(weather);
+            OddsCustomerIsWillingToBuyBasedOnWeather(weather);
             if(oddsOnRecipe > 50 && oddsOnTemperature > 50 && oddsOnWeather > 50 && oddsOnPrice > 50)
             {
                 Console.WriteLine("Bought a cup!");
                 pitcher.cupsLeftInPitcher -= 1;
-                player.wallet.Money += recipe.pricePerCup;
-                player.inventory.SubtractCupsInventory();
+                return true;
+
+            } else
+            {
+                
+                Console.WriteLine("Didn't buy a cup. :(");
+                return false;
             }
         }
+
 
     }
 }

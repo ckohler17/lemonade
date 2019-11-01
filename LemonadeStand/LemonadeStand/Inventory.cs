@@ -17,47 +17,45 @@ namespace LemonadeStand
         //constructor(Builder)
         public Inventory()
         {
-       
-         
+            lemons = new List<Lemon>();
+            cups = new List<Cup>();
+            sugarCubes = new List<SugarCubes>();
+            iceCubes = new List<IceCube>();
+
         }
 
         //member methods(Can Do)
        public void DisplayInventory()
         {
-            Console.WriteLine("Currently this is what your inventory looks like:");
+            Console.WriteLine("This is what your inventory looks like:");
             Console.WriteLine("Lemons: " + lemons.Count);
             Console.WriteLine("Cups: " + cups.Count);
             Console.WriteLine("Sugar cubes: " + sugarCubes.Count);
             Console.WriteLine("Ice cubes: " + iceCubes.Count);
         }
         public void AddLemonInventory(int lemonsBought)
-        {
-            lemons = new List<Lemon>();
+        {            
             for(int i = 0; i < lemonsBought; i++)
             {
                 lemons.Add(new Lemon());
             }
-
         }
         public void AddCupsInventory(int cupsBought)
-        {
-            cups = new List<Cup>();
+        {            
             for (int i = 0; i < cupsBought; i++)
             {
                 cups.Add(new Cup());
             }
         }
         public void AddSugarCubesInventory(int sugarCubesBought)
-        {
-            sugarCubes = new List<SugarCubes>();
+        {            
             for(int i =0; i < sugarCubesBought; i++)
             {
                 sugarCubes.Add(new SugarCubes());
             }
         }
         public void AddIceCubesInventory(int iceCubesBought)
-        {
-            iceCubes = new List<IceCube>();
+        {           
             for(int i = 0; i < iceCubesBought; i++)
             {
                 iceCubes.Add(new IceCube());

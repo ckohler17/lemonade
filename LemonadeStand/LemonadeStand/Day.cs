@@ -12,19 +12,21 @@ namespace LemonadeStand
         public Weather weather;
         public List<Customer> customers;
         public string name;
+        public  double dailyProfit;
+        public double dailyLoss;
       
         //constructor(Builder)
         public Day(int i)
         {
             weather = new Weather();
-            DetermineDayOfWeek(i);
+            DetermineDayOfWeek(i);        
                                 
         }
 
         //member methods(Can Do)
         public void RunDay(Store store, Player player, Recipe recipe)
         {
-
+            NewDayMessage(player);
             player.DoYouWantToChangeRecipe();
             if (player.response == "yes")
             {
@@ -35,39 +37,46 @@ namespace LemonadeStand
             player.DeterminePricePerCup();
             store.DisplayPriceOfAllItems();
             player.wallet.DisplayWallet();
+            player.inventory.DisplayInventory();
             store.SellCups(player);
             store.SellIceCubes(player);
+            while (player.inventory.iceCubes.Count < recipe.amountOfIceCubes)
+            {
+                Console.WriteLine("You do not have enough ice cubes to make a pitcher, please purchase more.");
+                store.SellIceCubes(player);                
+            }           
             store.SellLemons(player);
-            store.SellSugarCubes(player);
-            player.inventory.DisplayInventory();
+            while (player.inventory.lemons.Count < recipe.amountOfLemons)
+            {
+                Console.WriteLine("You do not have enough lemons to make a pitcher, please purchase more.");
+                store.SellLemons(player);
+            }
+            store.SellSugarCubes(player); 
+            while(player.inventory.sugarCubes.Count < recipe.amountOfSugarCubes)
+            {
+                Console.WriteLine("You do not have enough sugar cubes to make a pitcher, please purchase more.");
+                store.SellSugarCubes(player);
+            }
             player.pitcher.MakeAPitcherOfLemonade(player.inventory, player.recipe);
-            player.inventory.SubtractIceCubesInventory(recipe);
-            player.inventory.SubtractLemonInventory(recipe);
-            player.inventory.SubtractSugarCubeInventory(recipe);
             DetermineNumberOfCustomers();
             foreach(Customer customer in customers)
             {   if (player.pitcher.cupsLeftInPitcher > 0)
                 {
-                    customer.OddsCustomerIsWillingToBuyBasedOnRecipe(player.recipe);
-                    customer.OddsCustomerIsWillingToBuyBasedOnTemperature(weather);
-                    customer.OddsCustomerIsWillingToBuyBasedOnWeather(weather);
-                    customer.ChanceCustomerBuys(player.pitcher, player, recipe);
+                    bool decision = customer.ChanceCustomerBuys(player.pitcher, player, recipe, weather);
+                    if (decision == true)
+                    {
+                        player.wallet.Money += recipe.pricePerCup;
+                        dailyProfit += recipe.pricePerCup;
+                        player.profitTotal += recipe.pricePerCup;
+                        player.inventory.SubtractCupsInventory();                        
+                    }
                     if (player.pitcher.cupsLeftInPitcher < 1)
                     {
                         player.pitcher.MakeAPitcherOfLemonade(player.inventory, recipe);
-                        if (player.pitcher.cupsLeftInPitcher > 0)
-                        {
-                            player.inventory.SubtractIceCubesInventory(recipe);
-                            player.inventory.SubtractLemonInventory(recipe);
-                            player.inventory.SubtractSugarCubeInventory(recipe);
-                        }
-
-                    }
-                }
+                    }                    
+                }                
             }
-            player.wallet.DisplayWallet();
-            Console.WriteLine("Done");
-
+            DisplayDailyProfit();
         }
 
         public void DetermineDayOfWeek(int i)
@@ -112,6 +121,20 @@ namespace LemonadeStand
                 customers.Add(new Customer());
             }
         }
+        public void NewDayMessage(Player player)
+        {
+            Console.WriteLine("Hi " + player.name + "! Today is " + name + ". The weather will be " + weather.temperature + " and " + weather.condition + ".");
+        }
+        public void DisplayDailyProfit()
+        {
+            Console.WriteLine("Your daily profit was " + dailyProfit + ".");
+        }
+        public void DisplanyDailyLoss()
+        {
+            dailyLoss = 
+        }
+
+        
 
     }
 }

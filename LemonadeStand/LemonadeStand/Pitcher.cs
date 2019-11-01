@@ -24,6 +24,9 @@ namespace LemonadeStand
             if(inventory.lemons.Count >= recipe.amountOfLemons && inventory.iceCubes.Count >= recipe.amountOfIceCubes && inventory.sugarCubes.Count >= recipe.amountOfSugarCubes)
             {
                 cupsLeftInPitcher = 2;
+                inventory.SubtractLemonInventory(recipe);
+                inventory.SubtractIceCubesInventory(recipe);
+                inventory.SubtractSugarCubeInventory(recipe);
                 
             } else
             {

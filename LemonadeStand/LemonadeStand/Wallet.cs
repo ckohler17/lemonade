@@ -39,7 +39,7 @@ namespace LemonadeStand
         }
         public void ProfitPerDay(Day day)
         {
-
+            
         }
     }
 }

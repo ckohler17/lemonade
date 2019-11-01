@@ -10,16 +10,17 @@ namespace LemonadeStand
     {
         //member variables(Has A)
         Player player;
-        List<Day> days;
+        public List<Day> days;
         int currentDay;
         Store store;
+        public string playagain;
 
         //constructor(Builder)
         public Game()
         {
             player = new Player();          
-            store = new Store();     
-                                                        
+            store = new Store();    
+                                                                    
         }
 
         //member methods(Can Do)
@@ -29,15 +30,19 @@ namespace LemonadeStand
             player.EnterNameOfPlayer();
             DetermineNumberOfDays();
             WeatherPerDay();
-            Forecast();
+            Forecast();            
             foreach(Day day in days)
             {
                 day.RunDay(store, player, player.recipe);
-            }    
-            
-            
-                
-                   
+            }
+            player.DisplayTotalProfit();
+            PlayAgain();
+            if(playagain == "yes")
+            {
+                RunGame();
+            }         
+                            
+                  
             
         }
         public void DisplayRules()
@@ -60,7 +65,7 @@ namespace LemonadeStand
             foreach (Day day in days)
             {
                 day.weather.DetermineTemperature(random);
-                day.weather.DetermineWeatherConditions(random);
+                day.weather.DetermineWeatherConditions(random);                
             }
         }
         public void Forecast()
@@ -74,6 +79,12 @@ namespace LemonadeStand
             Console.WriteLine("On " + days[6].name + " it will be " + days[6].weather.temperature + " and " + days[6].weather.condition + ".");
 
         }
+        public void PlayAgain()
+        {
+            Console.WriteLine("Game over. Would you like to play again? Please enter 'yes' or 'no'.");
+            playagain = Console.ReadLine();
+        }
+
 
     }
 }
