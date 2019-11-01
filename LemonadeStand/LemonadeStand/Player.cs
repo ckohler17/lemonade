@@ -16,6 +16,7 @@ namespace LemonadeStand
         public Wallet wallet;
         public Pitcher pitcher;
         public double profitTotal;
+        public double lossTotal;
 
 
         //constructor(Builder)
@@ -26,6 +27,7 @@ namespace LemonadeStand
             wallet = new Wallet();
             pitcher = new Pitcher();
             profitTotal = 0;
+            lossTotal = 0;
 
         }
 
@@ -36,7 +38,7 @@ namespace LemonadeStand
             name = Console.ReadLine();
         }
 
-        
+
         public void DoYouWantToChangeRecipe()
         {
             Console.WriteLine("There are currently " + recipe.amountOfIceCubes + " ice cubes, " + recipe.amountOfSugarCubes + " sugar cubes and " + recipe.amountOfLemons + " lemons in your recipe. Do you want to change these values? Please enter 'yes' to change or 'no' to continue.");
@@ -66,10 +68,6 @@ namespace LemonadeStand
         {
             Console.WriteLine(name + " your total profit is " + profitTotal + ".");
         }
-
-
-
-
     }
 }
 

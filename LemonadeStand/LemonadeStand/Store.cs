@@ -9,10 +9,15 @@ namespace LemonadeStand
     class Store
     {
         //member variables(Has A)
-        double pricePerLemon;
-        double pricePerIceCube;
-        double pricePerCup;
-        double pricePerSugarCube;
+        public double pricePerLemon;
+        public double pricePerIceCube;
+        public double pricePerCup;
+        public double pricePerSugarCube;
+        public int cupsBought;
+        public int iceCubesBought;
+        public int lemonsBought;
+        public int sugarCubesBought;
+        public double lossTotal;
               
         
 
@@ -53,12 +58,13 @@ namespace LemonadeStand
         public void SellCups(Player player) 
         {
             Console.WriteLine("How many cups would you like to buy?");
-            int cupsBought = int.Parse(Console.ReadLine());
+            cupsBought = int.Parse(Console.ReadLine());
             
             if((cupsBought * pricePerCup) <= player.wallet.Money)
             {
                 player.inventory.AddCupsInventory(cupsBought);
                 player.wallet.Money -= (cupsBought * pricePerCup);
+                lossTotal += (cupsBought * pricePerCup);
             }
             else
             {
@@ -70,11 +76,12 @@ namespace LemonadeStand
         public void SellIceCubes(Player player)
         {
             Console.WriteLine("How many ice cubes would you like to buy?"); 
-            int iceCubesBought = int.Parse(Console.ReadLine()); 
+            iceCubesBought = int.Parse(Console.ReadLine()); 
             if(iceCubesBought * pricePerIceCube <= player.wallet.Money)
             {
                 player.inventory.AddIceCubesInventory(iceCubesBought);
-                player.wallet.Money -= (iceCubesBought * pricePerIceCube);                
+                player.wallet.Money -= (iceCubesBought * pricePerIceCube);    
+                lossTotal += (iceCubesBought * pricePerIceCube);
             }
             else
             {
@@ -84,12 +91,12 @@ namespace LemonadeStand
         public void SellLemons(Player player)
         {
             Console.WriteLine("How many lemons would you like to buy?");
-            int lemonsBought = int.Parse(Console.ReadLine());
+            lemonsBought = int.Parse(Console.ReadLine());
             if(lemonsBought * pricePerLemon <= player.wallet.Money)
             {
                 player.inventory.AddLemonInventory(lemonsBought);
-                player.wallet.Money -= (lemonsBought * pricePerLemon);
-                day.dailyLoss += (lemonsBought * pricePerLemon);
+                player.wallet.Money -= (lemonsBought * pricePerLemon); 
+                lossTotal += (lemonsBought * pricePerLemon);
             }
             else
             {
@@ -100,12 +107,12 @@ namespace LemonadeStand
         public void SellSugarCubes(Player player)
         {
             Console.WriteLine("How many sugar cubes would you like to buy?");
-            int sugarCubesBought = int.Parse(Console.ReadLine());
+            sugarCubesBought = int.Parse(Console.ReadLine());
             if(sugarCubesBought * pricePerSugarCube <= player.wallet.Money)
             {
                 player.inventory.AddSugarCubesInventory(sugarCubesBought);
-                player.wallet.Money -= (sugarCubesBought * pricePerSugarCube);
-                day.dailyLoss += (sugarCubesBought * pricePerSugarCube);
+                player.wallet.Money -= (sugarCubesBought * pricePerSugarCube);    
+                lossTotal += (sugarCubesBought * pricePerSugarCube);
             }
             else
             {

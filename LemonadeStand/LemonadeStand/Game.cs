@@ -11,6 +11,7 @@ namespace LemonadeStand
         //member variables(Has A)
         Player player;
         public List<Day> days;
+        double totalProfit;
         int currentDay;
         Store store;
         public string playagain;
@@ -33,9 +34,10 @@ namespace LemonadeStand
             Forecast();            
             foreach(Day day in days)
             {
-                day.RunDay(store, player, player.recipe);
+                day.RunDay(store, player, player.recipe);                
             }
             player.DisplayTotalProfit();
+            DisplayLossTotal();
             PlayAgain();
             if(playagain == "yes")
             {
@@ -83,6 +85,10 @@ namespace LemonadeStand
         {
             Console.WriteLine("Game over. Would you like to play again? Please enter 'yes' or 'no'.");
             playagain = Console.ReadLine();
+        }
+        public void DisplayLossTotal()
+        {
+            Console.WriteLine(player.name + " your total loss is " + store.lossTotal + ".");
         }
 
 

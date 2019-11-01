@@ -24,7 +24,7 @@ namespace LemonadeStand
         }
 
         //member methods(Can Do)
-        public void RunDay(Store store, Player player, Recipe recipe)
+        public double RunDay(Store store, Player player, Recipe recipe)
         {
             NewDayMessage(player);
             player.DoYouWantToChangeRecipe();
@@ -77,6 +77,8 @@ namespace LemonadeStand
                 }                
             }
             DisplayDailyProfit();
+            DisplayDailyLoss(store);
+            return dailyProfit;
         }
 
         public void DetermineDayOfWeek(int i)
@@ -129,12 +131,11 @@ namespace LemonadeStand
         {
             Console.WriteLine("Your daily profit was " + dailyProfit + ".");
         }
-        public void DisplanyDailyLoss()
+        public void DisplayDailyLoss(Store store)
         {
-            dailyLoss = 
-        }
-
-        
+            dailyLoss = (store.cupsBought * store.pricePerCup) + (store.lemonsBought * store.pricePerLemon) + (store.iceCubesBought * store.pricePerIceCube) + (store.sugarCubesBought * store.pricePerSugarCube);
+            Console.WriteLine("Your daily loss is " + dailyLoss + ".");
+        }           
 
     }
 }
