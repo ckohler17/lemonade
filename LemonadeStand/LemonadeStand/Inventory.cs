@@ -8,6 +8,9 @@ namespace LemonadeStand
 {
     class Inventory
     {
+        //this is an example of Open/Close Principle. It is open to add any new methods that might need to be added
+        //for more ingredients but wouldn't change the current functionality.
+        
         //member variables(Has A)
         public List<Lemon> lemons;
         public List<Cup> cups;

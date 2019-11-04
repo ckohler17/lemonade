@@ -52,23 +52,51 @@ namespace LemonadeStand
         public void ChangeNumberOfIceCubesInRecipe()
         {
             Console.WriteLine("There are currently " + recipe.amountOfIceCubes + " ice cubes in the recipe. How many ice cubes would you like?");
-            recipe.amountOfIceCubes = Convert.ToInt32(Console.ReadLine());
+            try 
+            {
+                recipe.amountOfIceCubes = Convert.ToInt32(Console.ReadLine()); 
+            } catch
+            {
+                Console.WriteLine("Sorry, I did not recognize that. Please enter a number.");
+            }
+            
 
         }
         public void ChangeNumberOfSugarCubesInRecipe()
         {
             Console.WriteLine("There are currently " + recipe.amountOfSugarCubes + " sugar cubes in the recipe. How many sugar cubes would you like?");
-            recipe.amountOfSugarCubes = int.Parse(Console.ReadLine());
+            try
+            {
+                recipe.amountOfSugarCubes = int.Parse(Console.ReadLine());
+            } catch
+            {
+                Console.WriteLine("Sorry, I do not recognize that. Please enter a number.");
+            }
+            
         }
         public void ChangeNumberOfLemonsInRecipe()
         {
             Console.WriteLine("There are currently " + recipe.amountOfLemons + " lemons in the recipe. How many lemons would you like?");
-            recipe.amountOfLemons = int.Parse(Console.ReadLine());
+            try
+            {
+                recipe.amountOfLemons = int.Parse(Console.ReadLine());
+            } catch
+            {
+                Console.WriteLine("Sorry, I do not recognize that. Please enter a number.");
+            }
         }
         public void DeterminePricePerCup()
         {
             Console.WriteLine("Currently, the price per cup of lemonade is " + recipe.pricePerCup + ". How much would you like it to be?");
-            recipe.pricePerCup = double.Parse(Console.ReadLine());
+            try
+            {
+                recipe.pricePerCup = double.Parse(Console.ReadLine());
+            } catch
+            {
+                Console.WriteLine("Sorry, I didn't recognize that. Please enter a number.");
+                DeterminePricePerCup();
+            }
+            
         }
         public void DisplayTotalProfit()
         {

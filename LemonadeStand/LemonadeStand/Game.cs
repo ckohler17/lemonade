@@ -52,6 +52,9 @@ namespace LemonadeStand
                 "everyday to determine how much lemonade you think you might sell on a given day so that you know how many of your supplies " +
                 "you will need to purchase.");
         }
+
+
+        //this is an example of single responsibility. this method only does one thing and that is to make a list of 7 days.
         public void DetermineNumberOfDays()
         {
             days = new List<Day>();
