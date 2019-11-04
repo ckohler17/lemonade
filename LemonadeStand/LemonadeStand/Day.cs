@@ -14,6 +14,8 @@ namespace LemonadeStand
         public string name;
         public  double dailyProfit;
         public double dailyLoss;
+
+
       
         //constructor(Builder)
         public Day(int i)
@@ -24,7 +26,7 @@ namespace LemonadeStand
         }
 
         //member methods(Can Do)
-        public double RunDay(Store store, Player player, Recipe recipe)
+        public void RunDay(Store store, Player player, Recipe recipe)
         {
             NewDayMessage(player);
             player.DoYouWantToChangeRecipe();
@@ -43,24 +45,25 @@ namespace LemonadeStand
             while (player.inventory.iceCubes.Count < recipe.amountOfIceCubes)
             {
                 Console.WriteLine("You do not have enough ice cubes to make a pitcher, please purchase more.");
-                store.SellIceCubes(player);                
-            }           
+                store.SellIceCubes(player);
+            }
             store.SellLemons(player);
             while (player.inventory.lemons.Count < recipe.amountOfLemons)
             {
                 Console.WriteLine("You do not have enough lemons to make a pitcher, please purchase more.");
                 store.SellLemons(player);
             }
-            store.SellSugarCubes(player); 
-            while(player.inventory.sugarCubes.Count < recipe.amountOfSugarCubes)
+            store.SellSugarCubes(player);
+            while (player.inventory.sugarCubes.Count < recipe.amountOfSugarCubes)
             {
                 Console.WriteLine("You do not have enough sugar cubes to make a pitcher, please purchase more.");
                 store.SellSugarCubes(player);
             }
             player.pitcher.MakeAPitcherOfLemonade(player.inventory, player.recipe);
             DetermineNumberOfCustomers();
-            foreach(Customer customer in customers)
-            {   if (player.pitcher.cupsLeftInPitcher > 0)
+            foreach (Customer customer in customers)
+            {
+                if (player.pitcher.cupsLeftInPitcher > 0)
                 {
                     bool decision = customer.ChanceCustomerBuys(player.pitcher, player, recipe, weather);
                     if (decision == true)
@@ -68,19 +71,20 @@ namespace LemonadeStand
                         player.wallet.Money += recipe.pricePerCup;
                         dailyProfit += recipe.pricePerCup;
                         player.profitTotal += recipe.pricePerCup;
-                        player.inventory.SubtractCupsInventory();                        
+                        player.inventory.SubtractCupsInventory();
                     }
                     if (player.pitcher.cupsLeftInPitcher < 1)
                     {
                         player.pitcher.MakeAPitcherOfLemonade(player.inventory, recipe);
-                    }                    
-                }                
+                    }
+                }
             }
-            DisplayDailyProfit();
-            DisplayDailyLoss(store);
-            return dailyProfit;
-        }
+            DetermineDailyLoss(store);
+            DisplayDailyProfitLoss();
+           
+            
 
+        }
         public void DetermineDayOfWeek(int i)
         {
            
@@ -116,7 +120,7 @@ namespace LemonadeStand
         public void DetermineNumberOfCustomers()
         {
             Random random = new Random();
-            int potentialCustomers = random.Next(2, 10); 
+            int potentialCustomers = random.Next(30, 70); 
             customers = new List<Customer>();
             for (int i = 0; i < potentialCustomers; i++)
             {
@@ -127,15 +131,28 @@ namespace LemonadeStand
         {
             Console.WriteLine("Hi " + player.name + "! Today is " + name + ". The weather will be " + weather.temperature + " and " + weather.condition + ".");
         }
-        public void DisplayDailyProfit()
+        public void DisplayDailyProfitLoss()
         {
-            Console.WriteLine("Your daily profit was " + dailyProfit + ".");
+            if(dailyLoss > dailyProfit)
+            {
+                double loss = (dailyLoss - dailyProfit);
+                Console.WriteLine("Your daily loss was " + loss + ".");
+            } else if(dailyProfit > dailyLoss)
+            {
+                double profit = (dailyProfit - dailyLoss);
+                Console.WriteLine("Your daily profit was " + profit + ".");
+            }else
+            {
+                Console.WriteLine("You broke even.");
+            }
+                
         }
-        public void DisplayDailyLoss(Store store)
+               
+        
+        public void DetermineDailyLoss(Store store)
         {
             dailyLoss = (store.cupsBought * store.pricePerCup) + (store.lemonsBought * store.pricePerLemon) + (store.iceCubesBought * store.pricePerIceCube) + (store.sugarCubesBought * store.pricePerSugarCube);
-            Console.WriteLine("Your daily loss is " + dailyLoss + ".");
-        }           
+        }
 
     }
 }

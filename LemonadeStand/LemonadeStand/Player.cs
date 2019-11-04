@@ -42,12 +42,18 @@ namespace LemonadeStand
         public void DoYouWantToChangeRecipe()
         {
             Console.WriteLine("There are currently " + recipe.amountOfIceCubes + " ice cubes, " + recipe.amountOfSugarCubes + " sugar cubes and " + recipe.amountOfLemons + " lemons in your recipe. Do you want to change these values? Please enter 'yes' to change or 'no' to continue.");
-            response = Console.ReadLine();
+            response = Console.ReadLine().ToLower();
+            if(response != "yes" && response != "no")
+            {
+                Console.WriteLine("Sorry, I did not recognize your response. Please enter either 'yes' or 'no'.");
+                DoYouWantToChangeRecipe();
+            }
         }
         public void ChangeNumberOfIceCubesInRecipe()
         {
             Console.WriteLine("There are currently " + recipe.amountOfIceCubes + " ice cubes in the recipe. How many ice cubes would you like?");
-            recipe.amountOfIceCubes = int.Parse(Console.ReadLine());
+            recipe.amountOfIceCubes = Convert.ToInt32(Console.ReadLine());
+
         }
         public void ChangeNumberOfSugarCubesInRecipe()
         {

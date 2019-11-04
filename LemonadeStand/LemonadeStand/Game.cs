@@ -36,8 +36,7 @@ namespace LemonadeStand
             {
                 day.RunDay(store, player, player.recipe);                
             }
-            player.DisplayTotalProfit();
-            DisplayLossTotal();
+            DisplayProfitLossTotal();
             PlayAgain();
             if(playagain == "yes")
             {
@@ -84,11 +83,27 @@ namespace LemonadeStand
         public void PlayAgain()
         {
             Console.WriteLine("Game over. Would you like to play again? Please enter 'yes' or 'no'.");
-            playagain = Console.ReadLine();
+            playagain = Console.ReadLine().ToLower();
+            if(playagain != "yes" && playagain != "no")
+            {
+                Console.WriteLine("Sorry, I did not recognize your answer. Please respond with 'yes' or 'no'.");
+            }
         }
-        public void DisplayLossTotal()
+        public void DisplayProfitLossTotal()
         {
-            Console.WriteLine(player.name + " your total loss is " + store.lossTotal + ".");
+            if(store.lossTotal > player.profitTotal)
+            {
+                double gameLoss = (store.lossTotal - player.profitTotal);
+                Console.WriteLine(player.name + " your total loss is " + gameLoss + ".");
+            }else if(player.profitTotal > store.lossTotal)
+            {
+                double gameProfit = (player.profitTotal - store.lossTotal);
+                Console.WriteLine(player.name + " your total profit is " + gameProfit + ".");
+            }else
+            {
+                Console.WriteLine(player.name + " you broke even.");
+            }
+
         }
 
 

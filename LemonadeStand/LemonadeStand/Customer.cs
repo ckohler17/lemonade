@@ -35,7 +35,7 @@ namespace LemonadeStand
             }
             if(weather.condition == "rainy")
             {
-                oddsOnWeather = random.Next(1, 60);
+                oddsOnWeather = random.Next(35, 70);
             }
             if(weather.condition == "sunny")
             {
@@ -43,7 +43,7 @@ namespace LemonadeStand
             }
             if(weather.condition == "muggy")
             {
-                oddsOnWeather = random.Next(50, 90);
+                oddsOnWeather = random.Next(40, 90);
             }
         }
         public void OddsCustomerIsWillingToBuyBasedOnTemperature(Weather weather)
@@ -54,7 +54,7 @@ namespace LemonadeStand
                 oddsOnTemperature = random.Next(60, 100);
             } else
             {
-                oddsOnTemperature = random.Next(1, 59);
+                oddsOnTemperature = random.Next(30, 70);
             }
         }
         public void OddsCustomerIsWillingToBuyBasedOnRecipe(Recipe recipe)
@@ -62,7 +62,7 @@ namespace LemonadeStand
             Random random = new Random();
             if(recipe.amountOfIceCubes.ToString() != "8" && recipe.amountOfLemons.ToString() != "4" && recipe.amountOfSugarCubes.ToString() != "4")
             {
-                oddsOnRecipe = random.Next(30, 80);
+                oddsOnRecipe = random.Next(30, 70);
             } else
             {
                 oddsOnRecipe = random.Next(60, 100);
@@ -73,13 +73,13 @@ namespace LemonadeStand
             Random random = new Random();
             if(recipe.pricePerCup > 1.25)
             {
-                oddsOnPrice = random.Next(30, 60);
+                oddsOnPrice = random.Next(30, 65);
             } else if(recipe.pricePerCup < 1.26 && recipe.pricePerCup > .74)
             {
-                oddsOnPrice = random.Next(50, 90);
+                oddsOnPrice = random.Next(40, 85);
             } else
             {
-                oddsOnPrice = random.Next(60, 100);
+                oddsOnPrice = random.Next(35, 90);
             }
         }
         public bool ChanceCustomerBuys(Pitcher pitcher, Player player, Recipe recipe, Weather weather)
